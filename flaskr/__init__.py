@@ -69,6 +69,9 @@ def create_app(test_config=None):
     if __name__ == '__main__':
         app.run(debug=True)
 
+    from . import db
+    db.init_app(app)
+
     return app
 
 
