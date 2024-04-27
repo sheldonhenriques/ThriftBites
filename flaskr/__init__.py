@@ -30,6 +30,12 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
+    # about page
+    @app.route("/about")
+    # function about
+    def about():
+        return "<h1>About Page</h1>"
+    return app
 
     @app.route('/register', methods=['GET', 'POST'])
     def register():
