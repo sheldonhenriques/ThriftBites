@@ -15,6 +15,13 @@
     {% endif %}
   {% endwith %}
   <form method="post">
+    <label for="usertype">User Type:</label>
+    <select name="User Type">
+
+      <option value="restaurant">restaurant</option>
+      <option value="Customer">Customer</option>
+  </select>
+  <br>
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required>
     <br>
