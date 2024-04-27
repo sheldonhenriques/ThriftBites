@@ -51,11 +51,11 @@ def create_app(test_config=None):
         if request.method == 'POST':
             username = request.form.get('username')
             password = request.form.get('password')
-
+            return redirect(url_for('restaurantView'))
             user_hashed_password = users_db.get(username)
             if user_hashed_password and check_password_hash(user_hashed_password, password):
                 flash('Login successful!')
-                return redirect(url_for('home'))
+                return redirect(url_for('restaurantView'))
             else:
                 flash('Invalid username or password.')
 
@@ -65,7 +65,11 @@ def create_app(test_config=None):
     def home():
         # Redirects to the registration page
         return redirect(url_for('register'))
-
+    
+    @app.route('/restaurantView')
+    def restaurantView():
+        return render_template('addItems.html')
+    
     if __name__ == '__main__':
         app.run(debug=True)
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Items to Sell</title>
+</head>
+<body>
+    <h2>Add Items to Sell</h2>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="image">Select Image:</label>
+        <input type="file" name="image" id="image" accept="image/*" required><br><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" required><br><br>
+
+        <label for="actual_price">Actual Price:</label>
+        <input type="number" name="actual_price" id="actual_price" required><br><br>
+
+        <label for="listed_price">Listed Price:</label>
+        <input type="number" name="listed_price" id="listed_price" required><br><br>
+
+        <label for="pickup_time">Pickup Time:</label>
+        <input type="datetime-local" name="pickup_time" id="pickup_time" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
