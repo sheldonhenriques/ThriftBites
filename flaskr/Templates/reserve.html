@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Marché</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9f2f9; /* Light blueish background */
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .product-info {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .product-info h1 {
+            color: #007bff; /* Blue title color */
+        }
+
+        .price {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            margin-bottom: 10px;
+        }
+
+        .rating .filled {
+            color: #ffc107; /* Yellow filled star color */
+        }
+
+        .rating .empty {
+            color: #ccc; /* Light gray empty star color */
+        }
+
+        .rating-value {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .description {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .items {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .items li {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .product-image {
+            flex: 1;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .reserve-btn {
+            display: block;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff; /* Blue button color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .reserve-btn:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="product-info">
+            <h1>Super Marché</h1>
+            <p class="price">$3.99</p>
+            <div class="rating">
+                <span class="filled">&#9733;</span>
+                <span class="filled">&#9733;</span>
+                <span class="filled">&#9733;</span>
+                <span class="filled">&#9733;</span>
+                <span class="empty">&#9733;</span>
+                <span class="rating-value">4.9 / 5.0</span>
+            </div>
+            <p class="description">It's always a surprise, but this is what you might get in your bag</p>
+            <ul class="items">
+                <li>Carrots</li>
+                <li>Apples</li>
+                <li>Oranges</li>
+                <li>Lime</li>
+                <li>Baguette</li>
+                <li>Bananas</li>
+                <li>Garlic</li>
+                <li>Bread</li>
+                <li>and much more...</li>
+            </ul>
+            <button class="reserve-btn">Reserve</button>
+        </div>
+        <div class="product-image">
+            <img src="{{ url_for('static', filename='product-image.jpg') }}" alt="Super Marché">
+        </div>
+    </div>
+</body>
+</html>

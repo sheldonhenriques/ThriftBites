@@ -1,10 +1,293 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Thrift Bites Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrift Bites</title>
+    <style>
+        /* Your existing CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9f2f9; /* Light blueish background */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #007bff; /* Blue title color */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .listing {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .item {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .item:hover {
+            transform: translateY(-5px);
+        }
+
+        .item-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .item-details {
+            padding: 20px;
+        }
+
+        .item-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .item-desc {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #e9ecef;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .item-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #007bff; /* Blue price color */
+        }
+
+        .item-quantity {
+            font-size: 18px;
+            color: #666;
+        }
+
+        /* New styles for modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow: auto; /* Allow scrolling within the modal */
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .form-input {
+            width: calc(100% - 20px); /* Adjusted width to accommodate borders and padding */
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff; /* Blue button color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Thrift Bites</h1>
-    <a href="/login">Login</a> | <a href="/register">Register</a>
+    <div class="container">
+        <div class="header">
+            <div class="title">Thrift Bites</div>
+            <div class="subtitle">Find Surplus Food Near You</div>
+        </div>
+        <div class="listing">
+            <!-- Sample Item -->
+            <div class="item" onclick="showPortions('AS Pasta Counter')">
+                <img class="item-img" src="https://via.placeholder.com/300x200" alt="Food Item">
+                <div class="item-details">
+                    <div class="item-title">AS Pasta Counter</div>
+                    <div class="item-desc">Chicken Pasta</div>
+                </div>
+                <div class="item-footer">
+                    <div class="item-price">$6</div>
+                    <div class="item-quantity">10 portions left</div>
+                </div>
+            </div>
+            <!-- Add more items like this -->
+            <div class="item" onclick="showPortions('AS Market Place')">
+                <img class="item-img" src="https://via.placeholder.com/300x200" alt="Food Item">
+                <div class="item-details">
+                    <div class="item-title">AS Market Place</div>
+                    <div class="item-desc">Sandwiches</div>
+                </div>
+                <div class="item-footer">
+                    <div class="item-price">$5</div>
+                    <div class="item-quantity">2 portions left</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portions Modal -->
+    <div id="portionsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <div class="modal-title">Select Portions</div>
+            </div>
+            <div class="form-group">
+                <label for="portionQuantity" class="form-label">Quantity</label>
+                <select id="portionQuantity" class="form-input">
+                    <option value="1" selected>1 Portion</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="item-price">$6</div>
+            </div>
+            <button class="form-btn" onclick="openPaymentForm()">Buy</button>
+        </div>
+    </div>
+
+    <!-- Payment Form -->
+    <div id="paymentForm" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentForm()">&times;</span>
+            <div class="modal-header">
+                <div class="modal-title">Payment Details</div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" id="name" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="cardNumber" class="form-label">Card Number</label>
+                <input type="text" id="cardNumber" class="form-input" placeholder="Enter your card number">
+            </div>
+            <div class="form-group">
+                <label for="expiryDate" class="form-label">Expiry Date</label>
+                <input type="text" id="expiryDate" class="form-input" placeholder="MM/YYYY">
+            </div>
+            <div class="form-group">
+                <label for="cvv" class="form-label">CVV</label>
+                <input type="text" id="cvv" class="form-input" placeholder="CVV">
+            </div>
+            <button class="form-btn" onclick="makePayment()">Pay Now</button>
+        </div>
+    </div>
+
+    <script>
+        /* Your existing JavaScript functions */
+        function showPortions(restaurantName) {
+            var modal = document.getElementById('portionsModal');
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            var modal = document.getElementById('portionsModal');
+            modal.style.display = 'none';
+        }
+
+        function openPaymentForm() {
+            var paymentForm = document.getElementById('paymentForm');
+            paymentForm.style.display = 'block';
+        }
+
+        function closePaymentForm() {
+            var paymentForm = document.getElementById('paymentForm');
+            paymentForm.style.display = 'none';
+        }
+
+        function makePayment() {
+            // Implement payment processing logic here
+            alert('Payment successful!');
+        }
+    </script>
 </body>
 </html>

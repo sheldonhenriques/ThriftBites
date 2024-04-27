@@ -64,7 +64,12 @@ def create_app(test_config=None):
     @app.route('/')
     def home():
         # Redirects to the registration page
-        return redirect(url_for('register'))
+        return render_template('home.html')
+
+    @app.route('/reserve')
+    def reserve():
+        # Redirects to the registration page
+        return render_template('reserve.html')
 
     if __name__ == '__main__':
         app.run(debug=True)
